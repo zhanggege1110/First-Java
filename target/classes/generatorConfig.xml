@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://www.mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+
+    <context id="context1" targetRuntime="MyBatis3"
+             defaultModelType="flat">
+
+        <plugin type="com.huifu.mybatis.plugin.OverIsMergeablePlugin"></plugin>
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/first"
+                        userId="root"
+                    password="root"/>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="true"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.demo.first.model"
+                            targetProject="src/main/java"/>
+        <!-- 生成xml文件 -->
+        <sqlMapGenerator targetPackage="com.demo.first.dao"
+                         targetProject="src/main/java"/>
+
+        <javaClientGenerator targetPackage="com.demo.first.dao"
+                             targetProject="src/main/java" type="XMLMAPPER"/>
+
+        <table tableName="user" />
+    </context>
+</generatorConfiguration>
